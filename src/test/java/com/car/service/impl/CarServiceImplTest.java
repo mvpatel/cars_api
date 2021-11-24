@@ -123,7 +123,7 @@ class CarServiceImplTest {
   @Test
   void update_car_should_be_failed_when_given_car_is_not_available() {
 
-    doThrow(new ResourceNotFoundException("Car is not available for given id")).when(mockCarRepository).findById(1L);
+    doThrow(new ResourceNotFoundException("Invalid id is given to update the Car")).when(mockCarRepository).findById(1L);
     boolean thrown = false;
     String exceptionMessage = null;
 
@@ -135,7 +135,7 @@ class CarServiceImplTest {
     }
 
     assertTrue(thrown);
-    assertEquals("Car is not available for given id", exceptionMessage);
+    assertEquals("Invalid id is given to update the Car", exceptionMessage);
 
     verify(mockCarRepository, times(1)).findById(1L);
     verify(mockCarRepository, times(0)).save(car1);
