@@ -28,7 +28,7 @@
 - Unit Tests are added for the Service
     - Mockito is used for the Unit Tests
     - All Required methods are Verified for the Repository
-    - Verification is specially done by times so any code changes should get error easily if any misatke
+    - Verification is specially done by times so any code changes should get error easily if any mistake
     - required Negative Tests cases are also added.
     - Coverage is 100%
     - Code Duplication is verified by Sonar Lint and no code Duplication is found.
