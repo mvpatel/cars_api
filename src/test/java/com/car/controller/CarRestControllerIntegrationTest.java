@@ -273,6 +273,23 @@ class CarRestControllerIntegrationTest {
   }
 
   @Test
+  void shouldNotUpdateTheCar_With_Status_isNotFoundWhen_InvalidCarId() throws Exception {
+    Car carForUpdateForInvalidId = Car.builder()
+        .colour("Red")
+        .make("Hundai")
+        .model("Accent")
+        .year((short) 2021)
+        .build();
+
+    String carForUpdateRequestJson = objectMapperWriter.writeValueAsString(carForUpdateForInvalidId);
+
+    mockMvc.perform(put(BASE_URL + "/" + 95)
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(carForUpdateRequestJson))
+        .andExpect(status().isNotFound());
+  }
+
+  @Test
   void shouldGetErrorForUpdateTheCar_WhereCarNotFound_With_Status_isNotFound() throws Exception {
     car1.setId(1L);
     car1.setModel("Q7");
