@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/cars")
 public class CarRestController {
 
-  private CarService carService;
+  private final CarService carService;
 
-  private ModelMapper modelMapper = new ModelMapper();
+  private final ModelMapper modelMapper = new ModelMapper();
 
   @Autowired
   public CarRestController(CarService carService) {
@@ -56,9 +56,9 @@ public class CarRestController {
 
   @DeleteMapping
   public ResponseEntity deleteCar(@Valid @RequestBody CarRequest carRequest) {
-      Car carToBeDeleted = modelMapper.map(carRequest, Car.class);
-      carService.deleteCar(carToBeDeleted);
-      return new ResponseEntity<>(HttpStatus.OK);
+    Car carToBeDeleted = modelMapper.map(carRequest, Car.class);
+    carService.deleteCar(carToBeDeleted);
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 
   @PutMapping("/{id}")
@@ -66,8 +66,7 @@ public class CarRestController {
     try {
       Car carToBeUpdated = modelMapper.map(carRequest, Car.class);
       return new ResponseEntity(carService.updateCar(id, carToBeUpdated), HttpStatus.OK);
-    }
-    catch (ResourceNotFoundException exc) {
+    } catch (ResourceNotFoundException exc) {
       return ResponseEntity
           .status(HttpStatus.NOT_FOUND)
           .body(exc.getMessage());

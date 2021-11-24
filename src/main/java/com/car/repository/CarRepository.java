@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CarRepository extends PagingAndSortingRepository<Car, Long> {
-    List<Car> findAllByMake(String make);
-    List<Car> findAllByModel(String model);
+  List<Car> findAllByMake(String make);
+
+  List<Car> findAllByModel(String model);
 }

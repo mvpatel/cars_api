@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CarServiceImpl implements CarService {
 
-  private CarRepository carRepository;
+  private final CarRepository carRepository;
 
   @Autowired
   public CarServiceImpl(CarRepository carRepository) {
@@ -47,7 +47,8 @@ public class CarServiceImpl implements CarService {
   public Car updateCar(Long id, Car newCar) {
 
     // finding the car by given id, if car won't be found then ResourceNotFoundException will be thrown
-    Car currentCar = carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Invalid id is given to update the Car"));
+    Car currentCar = carRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Invalid id is given "
+                                                                                                + "to update the Car"));
     currentCar.setMake(newCar.getMake());
     currentCar.setModel(newCar.getModel());
     currentCar.setColour(newCar.getColour());

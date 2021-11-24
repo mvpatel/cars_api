@@ -69,6 +69,7 @@ class CarServiceImplTest {
   void tearDown() {
     carList.clear();
   }
+
   @Test
   void save_car_success() {
     when(mockCarRepository.save(any(Car.class))).thenReturn(car1);

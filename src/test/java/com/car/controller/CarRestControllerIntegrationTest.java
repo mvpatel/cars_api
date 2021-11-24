@@ -13,9 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.jayway.jsonpath.JsonPath;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +29,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CarRestControllerIntegrationTest {
 
-  @Autowired
-  private MockMvc mockMvc;
-
+  final String BASE_URL = "/cars";
   Car car1;
   Car car2;
   Car car3;
@@ -42,8 +38,8 @@ class CarRestControllerIntegrationTest {
   String carRequestJson2;
   String carRequestJson3;
   ObjectWriter objectMapperWriter;
-
-  final String BASE_URL = "/cars";
+  @Autowired
+  private MockMvc mockMvc;
 
   @BeforeAll
   void setUp() throws Exception {
@@ -75,17 +71,17 @@ class CarRestControllerIntegrationTest {
     carRequestJson2 = objectMapperWriter.writeValueAsString(car2);
     carRequestJson3 = objectMapperWriter.writeValueAsString(car3);
 
-      mockMvc.perform(post(BASE_URL).contentType(MediaType.APPLICATION_JSON)
-          .content(carRequestJson1))
-          .andExpect(status().isCreated());
+    mockMvc.perform(post(BASE_URL).contentType(MediaType.APPLICATION_JSON)
+        .content(carRequestJson1))
+        .andExpect(status().isCreated());
 
-      mockMvc.perform(post(BASE_URL).contentType(MediaType.APPLICATION_JSON)
-          .content(carRequestJson2))
-          .andExpect(status().isCreated());
+    mockMvc.perform(post(BASE_URL).contentType(MediaType.APPLICATION_JSON)
+        .content(carRequestJson2))
+        .andExpect(status().isCreated());
 
-      mockMvc.perform(post(BASE_URL).contentType(MediaType.APPLICATION_JSON)
-          .content(carRequestJson3))
-          .andExpect(status().isCreated());
+    mockMvc.perform(post(BASE_URL).contentType(MediaType.APPLICATION_JSON)
+        .content(carRequestJson3))
+        .andExpect(status().isCreated());
   }
 
   @Test
@@ -251,7 +247,6 @@ class CarRestControllerIntegrationTest {
     carForUpdate.setColour("Yellow");
 
     String carForUpdateRequestJson = objectMapperWriter.writeValueAsString(carForUpdate);
-
 
     mockMvc.perform(put(BASE_URL + "/" + idForUpdateCar)
         .contentType(MediaType.APPLICATION_JSON)
