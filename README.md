@@ -15,10 +15,10 @@
 - Run Postman Collections
     - After Import CARAPI Collections will be available in the Postman
     - Run request One by One to get proper output
-    - If Required then add new Request by duplicating any of the current request.
+    - If Required then add a new Request by duplicating any of the current requests.
 
 #### Run all the Tests with Coverage
-- Run the all Tests by coverage on following folder
+- Run all Tests by coverage on the following folder
     - /cars_api/src/test/java/com/car/controller/CarRestControllerIntegrationTest.java
     - /cars_api/src/test/java/com/car/service/impl/CarServiceImplTest.java
 
@@ -57,13 +57,13 @@
 - Jacoco test Coverage plugin required to be added in the pom file
     - Minimum 85% Test Coverage required should be added under Jacoco
 - Git Commits should be improved.
-- Postman tests should be added in the collection
+- Postman tests should be added to the collection
 - More TDD should be followed
-- Naming convection should be improved and follow the company policy
+- Naming convention should be improved and follow the company policy
 - Log should be added where required.
 - Swagger should be used for the API Document
-- Car Model Information is not added as Requirements more discussion required for this.
+- Car Model Information is not added as Requirements more discussion is required for this.
 - Pom file check required and remove the unwanted dependency if required and update version where required
-    - Version mostly should be added on the top of the pom file that check required.
+    - Version mostly should be added on the top of the pom file that checks required.
         
 #### Comments from Reviewer
