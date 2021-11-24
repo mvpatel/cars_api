@@ -1,11 +1,26 @@
-#### Follow following Steps to run the Car Application
+### Car Rest API Application
 
-- Run the all Tests on following folder
+
+#### Run the API by the Postman
+- Go to the JAR File Folder
+    - cd /cars_api/Document/JarFiles
+- Run the JAR File
+    - JAVA -jar web-0.0.1-SNAPSHOT.jar
+- Get the Postman Collections
+    - Open PostMan
+    - Go to File -> Import
+    - Upload the following File
+        - /cars_api/Document/PostManResults/CarAPI.postman_test_run.json
+    - Click on Import
+- Run Postman Collections
+    - After Import CARAPI Collections will be available in the Postman
+    - Run request One by One to get proper output
+    - If Required then add new Request by duplicating any of the current request.
+
+#### Run all the Tests with Coverage
+- Run the all Tests by coverage on following folder
     - /cars_api/src/test/java/com/car/controller/CarRestControllerIntegrationTest.java
     - /cars_api/src/test/java/com/car/service/impl/CarServiceImplTest.java
-- Or Run the Jar File and call Rest APIs by Postman
-    - Base URL is /cars
-- Postman API Collection Could be given On the Request
 
 
 #### Following is done for this project
@@ -37,14 +52,12 @@
 
 #### Following Todo Work required to improve the Project as most of is not given in the requirements.
 - @Verify should be improved by adding more validation in the Entity file
-- Comments should be added in details.
-- More tests should be added where required
+- Comments should be added in the details.
 - SonarQube should be added in the pom file
 - Jacoco test Coverage plugin required to be added in the pom file
     - Minimum 85% Test Coverage required should be added under Jacoco
 - Git Commits should be improved.
-- Postman API Collection should be added
-    - Postman tests should be added in the collection
+- Postman tests should be added in the collection
 - More TDD should be followed
 - Naming convection should be improved and follow the company policy
 - Log should be added where required.
@@ -53,4 +66,4 @@
 - Pom file check required and remove the unwanted dependency if required and update version where required
     - Version mostly should be added on the top of the pom file that check required.
         
-#### Comments from Reviewer?
+#### Comments from Reviewer
