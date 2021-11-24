@@ -1,15 +1,14 @@
 package com.car;
 
-import com.car.controller.CarController;
-import com.car.service.CarService;
-import com.car.service.impl.CarServiceImpl;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class CarApplication {
 
-  private static CarController CarController;
-  private static CarService customerService = new CarServiceImpl();
-
   public static void main(String[] args) {
-  }
 
+    SpringApplication.run(CarApplication.class, args);
+
+  }
 }

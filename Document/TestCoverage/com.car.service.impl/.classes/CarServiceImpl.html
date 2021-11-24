@@ -1,0 +1,143 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CarServiceImpl</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.car.service.impl</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CarServiceImpl (com.car.service.impl)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CarServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/ 15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.car.service.impl;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.car.model.Car;
+<i>4</i>&nbsp;import com.car.repository.CarRepository;
+<i>5</i>&nbsp;import com.car.service.CarService;
+<i>6</i>&nbsp;import java.util.List;
+<i>7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>8</i>&nbsp;import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+<i>9</i>&nbsp;import org.springframework.stereotype.Service;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;@Service
+<i>12</i>&nbsp;public class CarServiceImpl implements CarService {
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;  private CarRepository carRepository;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;  @Autowired
+<b class="fc"><i>17</i>&nbsp;  public CarServiceImpl(CarRepository carRepository) {</b>
+<b class="fc"><i>18</i>&nbsp;    this.carRepository = carRepository;</b>
+<b class="fc"><i>19</i>&nbsp;  }</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;  @Override
+<i>22</i>&nbsp;  public Car addCar(Car car) {
+<b class="fc"><i>23</i>&nbsp;    return carRepository.save(car);</b>
+<i>24</i>&nbsp;  }
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;  @Override
+<i>27</i>&nbsp;  public List&lt;Car&gt; getCars() {
+<b class="fc"><i>28</i>&nbsp;    return (List&lt;Car&gt;) carRepository.findAll();</b>
+<i>29</i>&nbsp;  }
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;  @Override
+<i>32</i>&nbsp;  public List&lt;Car&gt; getCarsByMake(String make) {
+<b class="fc"><i>33</i>&nbsp;    return carRepository.findAllByMake(make);</b>
+<i>34</i>&nbsp;  }
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;  @Override
+<i>37</i>&nbsp;  public List&lt;Car&gt; getCarsByModel(String model) {
+<b class="fc"><i>38</i>&nbsp;    return carRepository.findAllByModel(model);</b>
+<i>39</i>&nbsp;  }
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;  @Override
+<i>42</i>&nbsp;  public void deleteCar(Car car) {
+<b class="fc"><i>43</i>&nbsp;    carRepository.delete(car);</b>
+<b class="fc"><i>44</i>&nbsp;  }</b>
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;  @Override
+<i>47</i>&nbsp;  public Car updateCar(Long id, Car newCar) {
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;    // finding the car by given id, if car won&#39;t be found then ResourceNotFoundException will be thrown
+<b class="fc"><i>50</i>&nbsp;    Car currentCar = carRepository.findById(id).orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Car is not &quot;</b>
+<i>51</i>&nbsp;                                                                                                + &quot;available for &quot;
+<i>52</i>&nbsp;                                                                                                + &quot;given id&quot;));
+<b class="fc"><i>53</i>&nbsp;    currentCar.setMake(newCar.getMake());</b>
+<b class="fc"><i>54</i>&nbsp;    currentCar.setModel(newCar.getModel());</b>
+<b class="fc"><i>55</i>&nbsp;    currentCar.setColour(newCar.getColour());</b>
+<b class="fc"><i>56</i>&nbsp;    currentCar.setYear(newCar.getYear());</b>
+<i>57</i>&nbsp;
+<b class="fc"><i>58</i>&nbsp;    return carRepository.save(currentCar);</b>
+<i>59</i>&nbsp;  }
+<i>60</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-11-23 23:50</div>
+</div>
+</body>
+</html>
